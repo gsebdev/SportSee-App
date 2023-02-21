@@ -51,15 +51,25 @@ header {
     width: 117px;
     height: calc(100% - 90px);
     background-color: $primary-backround;
-    padding-bottom: 60px;
     color: white;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    display: grid;
+    grid-template-rows: 1fr auto;
     justify-content: center;
+    align-items: center;
     .vertical-nav__copyright{
         font-size: 0.667em;
         writing-mode: vertical-lr;
         transform: rotate(180deg);
+        height: max-content;
+        padding-top: 60px;
+        width:fit-content;
+        justify-self: center;
+    }
+    ul {
+        padding: 0;
+        margin: 0;
+        li {
+            margin-bottom: 20px;
+        }
     }
 }

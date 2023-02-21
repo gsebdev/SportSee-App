@@ -1,8 +1,14 @@
 import React from 'react'
 import { Link, Outlet } from 'react-router-dom'
 import logo from '../images/logo.png'
+import cycle from '../images/cycle.png'
+import swim from '../images/swim.png'
+import yoga from '../images/yoga.png'
+import strength from '../images/strength.png'
+import SquareIcon from './SquareIcon'
 
 export default function Main(){
+    const navIcons = [yoga, swim, cycle, strength]
     return (
         <React.Fragment>
             <header>
@@ -18,6 +24,9 @@ export default function Main(){
             </header>
             <main><Outlet /></main>
             <nav className='vertical-nav'>
+                <ul>
+                    { navIcons.map(icon => <li><SquareIcon iconSrc={icon} className='nav'/></li>)}
+                </ul>
                 <span className='vertical-nav__copyright'>Copyright, SportSee 2023</span>
             </nav>
         </React.Fragment>

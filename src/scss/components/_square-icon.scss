@@ -1,0 +1,19 @@
+.square-icon {
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 6px;
+    height: 60px;
+    width: 60px;
+    img {
+        height: 20px;
+    }
+    &.nav {
+        height: 64px;
+        width: 64px;
+        img{
+            height: 32px;
+        }
+    }
+}

@@ -14,6 +14,9 @@ a {
 li {
     list-style: none;
 }
+h1 {
+    font-size: 2.667em;
+}
 
 header {
     box-sizing: border-box;
@@ -23,7 +26,7 @@ header {
     width: 100%;
     display: flex;
     align-items:center;
-    height: 90px;
+    height: $header-height;
     padding: 0 87px 0 30px;
     background-color: $primary-backround;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
@@ -43,12 +46,16 @@ header {
     }
     
 }
+main {
+    margin: $header-height 0 0 $vertical-nav-width;
+    padding: 0 6.8% 0;
+}
 .vertical-nav {
     z-index: 1;
     position: fixed;
     top: 90px;
     left: 0;
-    width: 117px;
+    width: $vertical-nav-width;
     height: calc(100% - 90px);
     background-color: $primary-backround;
     color: white;

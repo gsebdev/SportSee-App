@@ -1,7 +1,7 @@
 import './scss/app.scss'
 import { createBrowserRouter, RouterProvider } from "react-router-dom"
 import Main from './components/Main'
-import Home from './components/Home'
+import Dashboard from './components/Dashboard'
 
 const router = createBrowserRouter([
   {
@@ -10,7 +10,7 @@ const router = createBrowserRouter([
     children: [
       {
         index: true,
-        element: <Home />
+        element: <Dashboard />
       }
     ]
   },

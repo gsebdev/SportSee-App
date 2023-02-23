@@ -1,0 +1,22 @@
+.key-data{
+    display: flex;
+    align-items:center;
+    border-radius: 5px;
+    background-color: $secondary-background;
+    padding: 32px;
+    &__text-container{
+        margin-left: 24px;
+        h2{
+            margin: 0;
+            font-size: 0.778em;
+            color: $secondary-color;
+            font-weight: 500;
+        }
+        span {
+            display: block;
+            font-size: 1.111em;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+    }
+}

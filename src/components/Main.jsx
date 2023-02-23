@@ -25,7 +25,7 @@ export default function Main(){
             <main><Outlet /></main>
             <nav className='vertical-nav'>
                 <ul>
-                    { navIcons.map(icon => <li><SquareIcon iconSrc={icon} className='nav'/></li>)}
+                    {navIcons.map((icon, index) => <li key={icon + index}><SquareIcon iconSrc={icon} className='nav'/></li>)}
                 </ul>
                 <span className='vertical-nav__copyright'>Copyright, SportSee 2023</span>
             </nav>

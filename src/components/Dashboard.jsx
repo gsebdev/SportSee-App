@@ -1,4 +1,9 @@
-export default function Home(){
+import KeyDataDisplay from "./KeyDataDisplay"
+
+
+export default function Dashboard({ id=null }){
+    
+    
     return (
         <div className="dashboard">
             <div className="title">
@@ -9,7 +14,9 @@ export default function Home(){
             <div className="sessions-duration"></div>
             <div className="performance"></div>
             <div className="score"></div>
-            <div className="key-datas"></div>
+            <div className="key-datas">
+                <KeyDataDisplay userId={id} />
+            </div>
         </div>
     )
 }

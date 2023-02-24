@@ -1,3 +1,4 @@
+import AverageSessionsDuration from "./AverageSessionsDuration"
 import DailyActivity from "./DailyActivity"
 import KeyDataDisplay from "./KeyDataDisplay"
 
@@ -14,7 +15,9 @@ export default function Dashboard({ id=null }){
             <div className="daily-activity">
                 <DailyActivity userId={id} />
             </div>
-            <div className="sessions-duration"></div>
+            <div className="sessions-duration">
+                <AverageSessionsDuration userId={id} />
+            </div>
             <div className="performance"></div>
             <div className="score"></div>
             <div className="key-datas">

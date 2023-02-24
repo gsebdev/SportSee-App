@@ -20,9 +20,14 @@
     }
     .sessions-duration {
         grid-area: graph2;
-        background-color: aqua;
         height: 300px;
         width: 100%;
+        background-color: $primary-color;
+        overflow: hidden;
+        border-radius: 5px;
+        & > div:first-child {
+            margin-left: -8%;
+        }
     }
     .performance {
         grid-area: graph3;

@@ -55,4 +55,37 @@ class AverageSessionsModel {
     }
 }
 
-export { DailyActivityModel, AverageSessionsModel }
+class PerformanceModel {
+    constructor( data ) {
+        this._data = data.data
+        this._maxValue = Math.max(...this._data.data.map(data => data.value))
+        this._fullMark = this._maxValue + ( this._maxValue / 8 )
+        this._performance = this.formatData()
+    }
+    translateToFr(text) {
+        const dictionary = {
+            'endurance': 'endurance',
+            'cardio': 'cardio',
+            'intensity': 'intensité',
+            'energy': 'energie',
+            'speed': 'vitesse',
+            'strength': 'force'
+        }
+        return dictionary[text] ? dictionary[text] : text
+    }
+
+    formatData() {
+        return this._data.data.map(data => {
+            const ability = this.translateToFr(this._data.kind[data.kind])
+            return {
+                ability: ability.charAt(0).toUpperCase() + ability.slice(1) ,
+                value: data.value
+            }
+        })
+    }
+    get performance() {
+        return { data: this._performance, fullMark: this._fullMark }
+    }
+}
+
+export { DailyActivityModel, AverageSessionsModel, PerformanceModel }

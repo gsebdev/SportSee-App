@@ -31,7 +31,8 @@
     }
     .performance {
         grid-area: graph3;
-        background-color: aqua;
+        background-color: $chart-secondary-background;
+        border-radius: 5px;
         height: 300px;
         width: 100%;
     }

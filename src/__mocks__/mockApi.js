@@ -86,7 +86,7 @@ const mockApi = {
             }]
         }
     },
-    'average-sessions':{
+    averageSessions:{
         data: {
             userId: 12,
             sessions: [{

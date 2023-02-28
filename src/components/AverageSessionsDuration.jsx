@@ -1,31 +1,20 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useRef } from "react";
 import { Line, LineChart, Rectangle, ResponsiveContainer, Tooltip, XAxis, YAxis } from "recharts";
-import useFetch from "../utils/hooks/useFetch";
-import { AverageSessionsModel } from "../utils/Models";
 
-export default function AverageSessionsDuration({ userId }) {
-    const { data, loading, error } = useFetch('average-sessions', userId)
-    const [ chartData, setChartData ] = useState()
+export default function AverageSessionsDuration({ data }) {
+    const extrapolatedValues = [
+        {
+            day: '',
+            sessionLength: data.values[0] + (( data.values[0] - data.values[1] ) / 2)
+        },
+        {
+            day: '',
+            sessionLength: data.values[6] + (( data.values[6] - data.values[5] ) / 2)
+        } 
+    ]
+    const chartData = [ extrapolatedValues[0], ...data.sessions, extrapolatedValues[1] ]
 
     const container = useRef()
-
-    useEffect(() => {
-        if (data) {
-            const averageSessionModel = new AverageSessionsModel(data)
-            
-            const extrapolatedValues = [
-                {
-                    day: '',
-                    sessionLength: averageSessionModel.values[0] + (( averageSessionModel.values[0] - averageSessionModel.values[1] ) / 2)
-                },
-                {
-                    day: '',
-                    sessionLength: averageSessionModel.values[6] + (( averageSessionModel.values[6] - averageSessionModel.values[5] ) / 2)
-                } 
-            ]
-            setChartData( [ extrapolatedValues[0], ...averageSessionModel.sessions, extrapolatedValues[1] ] )
-        }
-    }, [data])
 
     const CustomCursor = ({ points, width }) => {
         const rectWidth = width - points[0].x
@@ -34,8 +23,6 @@ export default function AverageSessionsDuration({ userId }) {
 
     return (
         <div style={{ height: '100%', width: '100%' }} ref={container} >
-            {loading && <div>Loading...</div>}
-            {error && <div>Erreur...</div>}
             {chartData &&
                 <React.Fragment>
                 <h2>Durée moyenne des sessions</h2>

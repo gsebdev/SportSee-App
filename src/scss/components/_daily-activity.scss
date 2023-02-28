@@ -1,0 +1,23 @@
+.daily-activity {
+    position: relative;
+    h2 {
+        position: absolute;
+        color: $chart-title-color;
+        left: 43px;
+
+    }
+    &__tooltip {
+        font-size: 7px;
+        background-color: $chart-primary-background;
+        color: white;
+        padding: 4px 7px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        gap: 7px;
+        align-items: center;
+        li{
+            line-height: 24px;
+        }
+    }
+}

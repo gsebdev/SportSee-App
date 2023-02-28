@@ -11,10 +11,8 @@ export default function useFetch(ressource=null, id=null) {
         const fetchData = async () => {
             
             try {
-                console.log(process.env.REACT_APP_MOCK_DATA )
                 if(process.env.REACT_APP_MOCK_DATA === 'true'){
-                    console.log(mockApi[ressource])
-                    setTimeout(() => {setData(mockApi[ressource])}, 2000)
+                    setData(mockApi[ressource])
                     setLoading(false)
                 } else {
                     if(id){

@@ -4,19 +4,57 @@
                     "graph1 graph1 graph1 side" auto
                     "graph2 graph3 graph4 side" auto / 1fr 1fr 1fr 1fr;
     gap: 2vw;
+    @media (max-width: $small-screen-breakpoint) {
+        grid-template:  "title title title" auto
+                        "graph1 graph1 graph1" auto
+                        "side side side" auto
+                        "graph2 graph3 graph4" auto / 1fr 1fr 1fr;
+    }
     .title {
+        h1 {
+            @media (max-width: $small-screen-breakpoint) {
+                margin-bottom: 15px;
+            }
+        }
         grid-area: title;
         &__name{
             color: $primary-color;
         }
         &__text{
             font-weight: 400;
+            @media (max-width: $small-screen-breakpoint) {
+                margin: 0;
+            }
         }
     }
     .daily-activity {
         grid-area: graph1;
         height: 300px;
         width: 100%;
+        position: relative;
+        h2 {
+            position: absolute;
+            color: $chart-title-color;
+            left: 43px;
+            @media (max-width: $small-screen-breakpoint) {
+                left: 0px;
+            }
+
+        }
+        &__tooltip {
+            font-size: 7px;
+            background-color: $chart-primary-background;
+            color: white;
+            padding: 4px 7px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            gap: 7px;
+            align-items: center;
+            li{
+                line-height: 24px;
+            }
+        }
     }
     .sessions-duration {
         grid-area: graph2;
@@ -25,23 +63,73 @@
         background-color: $primary-color;
         overflow: hidden;
         border-radius: 5px;
+        position: relative;
+        h2{
+            color: rgba(255, 255, 255, 0.5);
+            width: 57%;
+            position: absolute;
+            left: 13%;
+            top: 29px;
+        }
         & > div:first-child {
             margin-left: -8%;
         }
     }
+
     .performance {
         grid-area: graph3;
         background-color: $chart-secondary-background;
         border-radius: 5px;
         height: 300px;
         width: 100%;
+        overflow: hidden;
+        &__tick-value {
+            font-size: 12px;
+        }
     }
+
     .score {
         grid-area: graph4;
-        background-color: aqua;
+        background-color: $secondary-background;
+        border-radius: 5px;
         height: 300px;
-        width: 100%; 
+        width: 100%;
+        position: relative;
+        overflow: hidden;
+        h2 {
+            position: absolute;
+            left: 30px;
+            top: 24px;
+        }
+        &__label-container {
+            position: absolute;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            width: 37%;
+            max-width: 110px;
+            text-align: center;
+            
+        }
+        &__label-amount{
+            font-weight: 700;
+            font-size: 1.444em;
+            margin-bottom: 5px;
+        }
+        &__label-text{
+            font-size: 0.889em;
+            color: $secondary-color;
+            line-height: 24px;
+        }
+        .recharts-surface {
+            transform: rotate(-18deg);
+        } 
     }
+
     .key-datas {
         grid-area: side;
         display: flex;
@@ -49,5 +137,33 @@
         justify-content: space-between;
         height: 100%;
         width: 100%;
+        @media (max-width: $small-screen-breakpoint) {
+            flex-direction: row;
+        }
+        .key-data {
+           display: flex;
+            align-items:center;
+            border-radius: 5px;
+            background-color: $secondary-background;
+            padding: 32px;
+            @media (max-width: $small-screen-breakpoint) {
+                padding: 0 32px 50px 32px;
+            }
+            &__text-container{
+                margin-left: 24px;
+                h2{
+                    margin: 0;
+                    font-size: 0.778em;
+                    color: $secondary-color;
+                    font-weight: 500;
+                }
+                span {
+                    display: block;
+                    font-size: 1.111em;
+                    font-weight: 700;
+                    margin-bottom: 5px;
+                }
+            } 
+        }     
     }
 }

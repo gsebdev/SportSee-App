@@ -5,6 +5,7 @@ import AverageSessionsDuration from "./AverageSessionsDuration"
 import DailyActivity from "./DailyActivity"
 import KeyDataDisplay from "./KeyDataDisplay"
 import Performance from "./Performance"
+import Score from "./Score"
 
 
 export default function Dashboard({ id=null }){
@@ -35,7 +36,9 @@ export default function Dashboard({ id=null }){
                     <div className="performance">
                         <Performance  data={formatedData.performance} />
                     </div>
-                    <div className="score"></div>
+                    <div className="score">
+                        <Score data={formatedData.score} />
+                    </div>
                     <div className="key-datas">
                         <KeyDataDisplay data={formatedData.keyData} />
                     </div>

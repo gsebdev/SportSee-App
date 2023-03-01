@@ -57,7 +57,7 @@ export default class DataModel {
    }
 
     formatScoreData(){
-        return this._data.user.todayScore * 100
+        return { score: this._data.user.todayScore * 100 }
     }
 
     formatAverageSessions(){

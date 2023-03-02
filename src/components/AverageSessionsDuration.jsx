@@ -49,7 +49,7 @@ export default function AverageSessionsDuration({ data }) {
                             <YAxis
                                 hide={true}
                                 dataKey='sessionLength'
-                                domain={([dataMin, dataMax]) => { const halfDiff = (dataMax - dataMin) / 4; return [(dataMin - halfDiff), (dataMax + halfDiff)] }} />
+                                domain={([dataMin, dataMax]) => { const halfDiff = (dataMax - dataMin) / 2; return [(dataMin - halfDiff), (dataMax + halfDiff)] }} />
                             <Line
                                 dataKey='sessionLength'
                                 type='natural'

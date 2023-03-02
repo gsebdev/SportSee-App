@@ -9,35 +9,38 @@ export default function useFetchAllData(id=null) {
 
     useEffect(() => {
         const fetchData = async () => {
-            const url = 'http://localhost:3000/'
+            const url = process.env.REACT_APP_API_URL
             const endpoints = {
                 user: `user/${id}`,
                 activity: `user/${id}/activity`,
                 averageSessions: `user/${id}/average-sessions`,
                 performance: `user/${id}/performance`,
             }
-
             try {
                 if(process.env.REACT_APP_MOCK_DATA === 'true'){
                     setData(mockApi)
                     setLoading(false)
                 } else {
                     if(id){
-                        const fetchedData = {}
-                        Object.keys(endpoints).forEach(async key => {
+                        const fetchedData = {user: '', activity: '', averageSessions: '', performance: ''}
+                        for (const key of Object.keys(endpoints)) {
                             const response = await fetch(url + endpoints[key])
-                            const jsData = await response.json()
-                            fetchedData.key = jsData
-                        })
+                            if(response.ok) {
+                                const jsData = await response.json()
+                                fetchedData[key] = jsData 
+                            } else {
+                                throw new Error(response.status)
+                            }
+                        }
                         setData(fetchedData)
-                    }else{
+                        setLoading(false)
+                    } else {
                         throw new Error('Une erreur est survenue!')
                     }
-                    
                 }
-            } 
-            catch (error) {
-                setError(error)
+            } catch(error) {
+                const message = error.message === '404' ? 'Erreur 404 : Page non trouvée' : `Erreur ${error.message}`
+                setError(message)
                 setLoading(false)
             }
         }

@@ -58,6 +58,8 @@ header {
 main {
     margin: $header-height 0 0 $vertical-nav-width;
     padding: 0 6.8% 0;
+    position: relative;
+    min-height: calc(100vh - $header-height);
     @media (max-width: $small-screen-breakpoint) {
         padding: 0 3.4% 0;
     }

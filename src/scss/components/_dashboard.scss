@@ -10,6 +10,45 @@
                         "side side side" auto
                         "graph2 graph3 graph4" auto / 1fr 1fr 1fr;
     }
+    &__loader {
+        top: 30%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 48px;
+        height: 48px;
+        border: 3px solid $primary-backround;
+        border-radius: 50%;
+        display: inline-block;
+        position: absolute;
+        box-sizing: border-box;
+        animation: rotation 1s linear infinite;
+        &::after {
+            content: '';  
+            box-sizing: border-box;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            border: 3px solid;
+            border-color: $chart-primary-background transparent;
+        } 
+        @keyframes rotation {
+            0% {
+                transform: rotate(0deg);
+            }
+            100% {
+                transform: rotate(360deg);
+            }
+        } 
+    }
+    &__error {
+        margin-top: 150px;
+        text-align: center;
+    }
+
     .title {
         h1 {
             @media (max-width: $small-screen-breakpoint) {
@@ -29,7 +68,7 @@
     }
     .daily-activity {
         grid-area: graph1;
-        height: 300px;
+        height: 320px;
         width: 100%;
         position: relative;
         h2 {
@@ -58,7 +97,7 @@
     }
     .sessions-duration {
         grid-area: graph2;
-        height: 300px;
+        height: 263px;
         width: 100%;
         background-color: $primary-color;
         overflow: hidden;
@@ -80,7 +119,7 @@
         grid-area: graph3;
         background-color: $chart-secondary-background;
         border-radius: 5px;
-        height: 300px;
+        height: 263px;
         width: 100%;
         overflow: hidden;
         &__tick-value {
@@ -92,7 +131,7 @@
         grid-area: graph4;
         background-color: $secondary-background;
         border-radius: 5px;
-        height: 300px;
+        height: 263px;
         width: 100%;
         position: relative;
         overflow: hidden;

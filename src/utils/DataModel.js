@@ -1,32 +1,27 @@
 export default class DataModel {
     constructor( data ){
         this._data = data
-        if(this._data.user){
-            this._userKeyData = this.formatKeyData()
-            this._userScore = this.formatScoreData()
-        }
-        if(this._data.activity){
-            this._userActivity = this.formatActivityData()
-        }
-        if(this._data.performance){
-            this._userPerformance = this.formatPerformanceData()
-        }
-        if(this._data.averageSessions){
-            this._userAverageSessions = this.formatAverageSessions()
-        }
+        this._userKeyData = this.formatKeyData()
+        this._userScore = this.formatScoreData()
+        this._userName = this._data.user.data.userInfos.firstName
+        this._userActivity = this.formatActivityData()
+        this._userPerformance = this.formatPerformanceData()
+        this._userAverageSessions = this.formatAverageSessions()
+        
     }
 
     get all() {
         return {
             keyData: this._userKeyData,
             score: this._userScore,
+            userName: this._userName,
             activity: this._userActivity,
             performance: this._userPerformance,
             averageSessions: this._userAverageSessions
         }
     }
     formatKeyData(){
-        const keyData = this._data.user.keyData
+        const keyData = this._data.user.data.keyData
         
         const formatValue = (value) => {
             return /^[0-9]+$/.test(value) ? new Intl.NumberFormat('en').format(value) : value
@@ -57,7 +52,7 @@ export default class DataModel {
    }
 
     formatScoreData(){
-        return { score: this._data.user.todayScore * 100 }
+        return this._data.user.data.todayScore ? { score: this._data.user.data.todayScore * 100 } : { score: this._data.user.data.score * 100 }
     }
 
     formatAverageSessions(){
@@ -97,8 +92,8 @@ export default class DataModel {
                 }
             })
         
+        const fullMark =  1.125 * Math.max(...performance.map(data => data.value))
 
-        const fullMark = 1.125 * Math.max(performance.map(data => data.value))
         return {
             data: performance,
             fullMark: fullMark

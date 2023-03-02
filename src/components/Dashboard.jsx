@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react"
+import { useParams } from "react-router-dom"
 import useFetchAllData from "../utils/hooks/useFetchAllData"
-import DataModel from "../utils/Models"
+import DataModel from "../utils/DataModel"
 import AverageSessionsDuration from "./AverageSessionsDuration"
 import DailyActivity from "./DailyActivity"
 import KeyDataDisplay from "./KeyDataDisplay"
@@ -8,23 +9,30 @@ import Performance from "./Performance"
 import Score from "./Score"
 
 
-export default function Dashboard({ id=null }){
+export default function Dashboard(){
+    const { id } = useParams()
     const [ formatedData, setFormatedData ] = useState()
     const { data, loading, error } = useFetchAllData(id)
     
     useEffect(() => {
-        if(data){
+        if(data && !error){
             const dataModel = new DataModel(data)
             setFormatedData(dataModel.all)
         }
-    }, [data])
+    }, [data, error])
 
     return (
         <React.Fragment>
+            {loading && <div className="dashboard__loader"></div>}
+            { error && 
+                <div className="dashboard__error">
+                    <span>{error}</span>
+                </div>
+            }
             {formatedData && 
-                <div className="dashboard">
+                <div className='dashboard'>
                     <div className="title">
-                        <h1>Bonjour <span className="title__name">Thomas</span></h1>
+                        <h1>Bonjour <span className="title__name">{formatedData.userName}</span></h1>
                         <p className="title__text">Félicitations ! Vous avez explosé vos objectifs hier 👏</p>
                     </div>
                     <div className="daily-activity">

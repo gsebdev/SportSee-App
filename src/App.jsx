@@ -2,6 +2,7 @@ import './scss/app.scss'
 import { createBrowserRouter, RouterProvider } from "react-router-dom"
 import Main from './components/Main'
 import Dashboard from './components/Dashboard'
+import NotFound from './components/NotFound'
 
 const router = createBrowserRouter([
   {
@@ -9,11 +10,15 @@ const router = createBrowserRouter([
     element: <Main />,
     children: [
       {
-        index: true,
+        path: 'user/:id',
         element: <Dashboard />
-      }
+      },
     ]
   },
+  {
+    path: '*',
+    element: <NotFound /> 
+  }
 ]
 
 )

@@ -1,5 +1,6 @@
 const mockApi = {
     user: {
+        data: {
             id: 12,
             userInfos: {
                 firstName: "Karl",
@@ -13,6 +14,7 @@ const mockApi = {
                 carbohydrateCount: 290,
                 lipidCount: 50
             }
+        }
     },
     performance:{
         data: {

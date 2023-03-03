@@ -8,10 +8,17 @@ import KeyDataDisplay from "./KeyDataDisplay"
 import Performance from "./Performance"
 import Score from "./Score"
 
-
+/**
+ * React Component that displays the user dashboard
+ * 
+ * @returns {React.ReactElement}
+ */
 export default function Dashboard(){
+    // get the id param of the request
     const { id } = useParams()
     const [ formatedData, setFormatedData ] = useState()
+
+    //fetch all the data needed with a custom hook
     const { data, loading, error } = useFetchAllData(id)
     
     useEffect(() => {

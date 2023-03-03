@@ -1,19 +1,33 @@
+import { PropTypes } from 'prop-types'
 import React from 'react'
 import { Bar, BarChart, Legend, Rectangle, ReferenceLine, ResponsiveContainer, Tooltip, XAxis, YAxis } from 'recharts'
 
-export default function DailyActivity({ data }) {
+/**
+ * @component
+ * @property {object} data - formatted data for the barChart - required
+ * @return {React.ReactElement} A BarChart with daily weight and calories consumed
+ */
+function DailyActivity({ data }) {
+    // define axis line and label colors
     const axisLinesColor = '#DEDEDE'
     const axisLabelsColor = '#9B9EAC'
-
+    
+    // get the Y axis domain and tick values for each properties that will be displayed in the chart
     const yAxis = {
                 calories: getYAxisValues(data.calories),
                 kilogram: getYAxisValues(data.kilogram)
             }
+
+    // get the X axis domain and tick values
     const xAxis = { 
                 domain: [ Math.min(...data.days), Math.max(...data.days) ], 
                 values: data.days 
             }
-            
+    /**
+     * Returns a min value, a max value and a middle value for the Y axis.
+     * @param {string} values - An array of all the values of a property that will be provided to the chart.
+     * @returns {object}
+     */       
     function getYAxisValues(values) {
             const maxValue = Math.max(...values)
             const minValue = Math.min(...values)
@@ -26,6 +40,7 @@ export default function DailyActivity({ data }) {
             return { min: yMin, max: yMax, middle: yMiddle }
     }
 
+    /** function to render the custom ToolTip of the chart */
     const renderToolTip = ({ payload }) => {
         return (
                 <ul className='daily-activity__tooltip'>
@@ -35,7 +50,7 @@ export default function DailyActivity({ data }) {
                 </ul>            
         )
     }
-
+    /** function to format a custom Legend of the chart */
     const legendFormatter = value => <span style={{ color: '#9B9EAC', marginLeft: 6 }}>{value}</span>
 
     return (
@@ -132,3 +147,18 @@ export default function DailyActivity({ data }) {
         </React.Fragment>
     )
 }
+
+DailyActivity.propTypes = {
+    data: PropTypes.shape({
+        calories: PropTypes.arrayOf(PropTypes.number).isRequired,
+        days: PropTypes.arrayOf(PropTypes.number).isRequired,
+        kilogram: PropTypes.arrayOf(PropTypes.number).isRequired,
+        sessions: PropTypes.arrayOf(PropTypes.shape({
+            calories: PropTypes.number.isRequired,
+            day: PropTypes.number.isRequired,
+            kilogram: PropTypes.number.isRequired
+        })).isRequired
+    })
+}
+
+export default DailyActivity

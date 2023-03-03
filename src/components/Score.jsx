@@ -1,8 +1,15 @@
-import React from "react";
-import { PolarAngleAxis, RadialBar, RadialBarChart, ResponsiveContainer } from "recharts";
+import React from "react"
+import { PolarAngleAxis, RadialBar, RadialBarChart, ResponsiveContainer } from "recharts"
+import { PropTypes } from 'prop-types'
 
-export default function Score({ data }) {
-
+/**
+* React component a radial bar chart of the user today score.
+* @param {Object} props
+* @param {Object} props.data - data object containing the score value.
+* @param {number} props.data.score - score value to display.
+* @returns {React.ReactElement}
+*/
+function Score({ data }) {
     return (
         <React.Fragment>
             <h2>Score</h2>
@@ -38,3 +45,11 @@ export default function Score({ data }) {
         </React.Fragment>
     )
 }
+
+Score.propTypes = {
+    data: PropTypes.shape({
+        score: PropTypes.number.isRequired
+    }).isRequired
+}
+
+export default Score

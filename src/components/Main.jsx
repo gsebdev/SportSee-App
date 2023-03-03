@@ -7,6 +7,11 @@ import yoga from '../images/yoga.png'
 import strength from '../images/strength.png'
 import SquareIcon from './SquareIcon'
 
+/**
+ * React Component used to display the header and the vertical navbar of the dashboard
+ * 
+ * @returns {React.ReactElement}
+ */
 export default function Main(){
     const navIcons = [yoga, swim, cycle, strength]
     return (

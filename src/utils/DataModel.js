@@ -95,7 +95,7 @@ export default class DataModel {
         const fullMark =  1.125 * Math.max(...performance.map(data => data.value))
 
         return {
-            data: performance,
+            abilities: performance,
             fullMark: fullMark
         }
         

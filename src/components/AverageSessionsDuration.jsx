@@ -1,7 +1,16 @@
 import React, { useRef } from "react";
+import PropTypes from 'prop-types'
 import { Line, LineChart, Rectangle, ResponsiveContainer, Tooltip, XAxis, YAxis } from "recharts";
 
-export default function AverageSessionsDuration({ data }) {
+/**
+ * Component that displays a line chart of daily average durations of sessions
+ * 
+ * @param {object} props
+ * @param {object} props.data - object {sessions: [...{}], values: []}
+ * @returns {React.ReactElement}
+ */
+function AverageSessionsDuration({ data }) {
+    //calculate extrapolated values [start, end], and add them to the data we will pass to the chart
     const extrapolatedValues = [
         {
             day: '',
@@ -13,7 +22,8 @@ export default function AverageSessionsDuration({ data }) {
         } 
     ]
     const chartData = [ extrapolatedValues[0], ...data.sessions, extrapolatedValues[1] ]
-
+    
+    //used to get the chart container element and further get its height to pass it to the CustomCursor component
     const container = useRef()
 
     const CustomCursor = ({ points, width }) => {
@@ -65,3 +75,15 @@ export default function AverageSessionsDuration({ data }) {
         </div>
     )
 }
+
+AverageSessionsDuration.propTypes = {
+    data: PropTypes.shape({
+        sessions: PropTypes.arrayOf(PropTypes.shape({
+            sessionLength: PropTypes.number.isRequired,
+            day: PropTypes.string.isRequired
+        })).isRequired,
+        values: PropTypes.arrayOf(PropTypes.number).isRequired
+    })
+}
+
+export default AverageSessionsDuration

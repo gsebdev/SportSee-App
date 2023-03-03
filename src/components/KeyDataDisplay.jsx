@@ -4,8 +4,18 @@ import chicken from '../images/chicken.png'
 import apple from '../images/apple.png'
 import cheeseburger from '../images/cheeseburger.png'
 import React from 'react'
+import { PropTypes } from 'prop-types'
 
-export default function KeyDataDisplay({ data }) {
+/**
+ * React Component that displays the user key data
+ * 
+ * @param {object} props
+ * @param {[...{ value: string, name: string, unit: string }]} props.data - an array of the user key data
+ * @returns {React.ReactElement}
+ */
+function KeyDataDisplay({ data }) {
+    
+    //set the background color and icon file for each keydata
     const display = {
         calories: {
             bgColor: 'rgba(255, 0, 0, 0.1)',
@@ -42,3 +52,13 @@ export default function KeyDataDisplay({ data }) {
         </React.Fragment>
     )
 }
+
+KeyDataDisplay.propTypes = {
+    data: PropTypes.arrayOf(PropTypes.shape({
+        value: PropTypes.string.isRequired,
+        name: PropTypes.string.isRequired,
+        unit: PropTypes.string.isRequired
+    })).isRequired
+}
+
+export default KeyDataDisplay

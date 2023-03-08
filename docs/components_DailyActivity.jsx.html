@@ -1,4 +1,32 @@
-import { PropTypes } from 'prop-types'
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: components/DailyActivity.jsx</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: components/DailyActivity.jsx</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import { PropTypes } from 'prop-types'
 import React from 'react'
 import { Bar, BarChart, Legend, Rectangle, ReferenceLine, ResponsiveContainer, Tooltip, XAxis, YAxis } from 'recharts'
 /** 
@@ -10,10 +38,10 @@ import { Bar, BarChart, Legend, Rectangle, ReferenceLine, ResponsiveContainer, T
  * @memberof module:DailyActivity
  * @param {object} props react props object that must contain :
  *   @param {object} props.data formatted user's data for the Bar chart that must contain :
- *     @param {array<Number>} props.data.calories an array containing each sessions calories values
- *     @param {array<Number>} props.data.days an array containing each sessions day values
- *     @param {array<Number>} props.data.kilogram an array containing each sessions weight values
- *     @param {array<{day: Number, kilogram: Number, calories: Number}>} props.data.sessions an array containing each session represented as an object.
+ *     @param {array&lt;Number>} props.data.calories an array containing each sessions calories values
+ *     @param {array&lt;Number>} props.data.days an array containing each sessions day values
+ *     @param {array&lt;Number>} props.data.kilogram an array containing each sessions weight values
+ *     @param {array&lt;{day: Number, kilogram: Number, calories: Number}>} props.data.sessions an array containing each session represented as an object.
  * @return {JSX.Element} returns a recharts BarChart with daily weight and calories consumed based on user's data
  */
 
@@ -63,11 +91,11 @@ function DailyActivity({ data }) {
      */
     const CustomToolTip = ({ payload }) => {
         return (
-                <ul className='daily-activity__tooltip'>
+                &lt;ul className='daily-activity__tooltip'>
                     {payload.map((item, index) => {
-                        return <li key={item.value + item.unit + index}>{item.value + item.unit}</li>
+                        return &lt;li key={item.value + item.unit + index}>{item.value + item.unit}&lt;/li>
                     })}
-                </ul>            
+                &lt;/ul>            
         )
     }
     /**
@@ -77,32 +105,32 @@ function DailyActivity({ data }) {
      * @param {string} value the legend text value
      * @returns {JSX.Element}
      */
-    const legendFormatter = value => <span style={{ color: '#9B9EAC', marginLeft: 6 }}>{value}</span>
+    const legendFormatter = value => &lt;span style={{ color: '#9B9EAC', marginLeft: 6 }}>{value}&lt;/span>
 
     return (
 
-        <React.Fragment>
-            <h2>Activité quotidienne</h2>
-            <ResponsiveContainer width='100%' height="100%">
-                <BarChart
+        &lt;React.Fragment>
+            &lt;h2>Activité quotidienne&lt;/h2>
+            &lt;ResponsiveContainer width='100%' height="100%">
+                &lt;BarChart
                     barSize={7}
                     margin={{ left: 43, bottom: 25, top: 60, right: 29 }}
                     barGap={8}
                     data={data.sessions}
                 >
-                    <ReferenceLine
+                    &lt;ReferenceLine
                         yAxisId='kilogram'
                         y={yAxis.kilogram.middle}
                         stroke={axisLinesColor}
                         strokeDasharray="2 2"
                     />
-                    <ReferenceLine
+                    &lt;ReferenceLine
                         yAxisId='kilogram'
                         y={yAxis.kilogram.max}
                         stroke={axisLinesColor}
                         strokeDasharray="2 2"
                     />
-                    <XAxis
+                    &lt;XAxis
                         tickMargin={16}
                         tick={{ fontSize: 14 }}
                         dataKey="day"
@@ -115,14 +143,14 @@ function DailyActivity({ data }) {
                         interval={0}
                         domain={xAxis.domain}
                     />
-                    <YAxis
+                    &lt;YAxis
                         hide={true}
                         scale='linear'
                         domain={[yAxis.calories.min, yAxis.calories.max]}
                         yAxisId="calories"
                         name='calories'
                         dataKey='calories' />
-                    <YAxis
+                    &lt;YAxis
                         tickMargin={45}
                         tick={{ fontSize: 14 }}
                         ticks={[yAxis.kilogram.min, yAxis.kilogram.middle, yAxis.kilogram.max]}
@@ -137,13 +165,13 @@ function DailyActivity({ data }) {
                         orientation="right"
                         tickCount={2}
                     />
-                    <Tooltip 
+                    &lt;Tooltip 
                     cursor={{ fill: 'rgba(196, 196, 196, 0.5)' }}
                     formatter={(value) => [value, ''] }
                     separator=''
-                    content={<CustomToolTip />}
+                    content={&lt;CustomToolTip />}
                     position={{y: 40}} />
-                    <Legend
+                    &lt;Legend
                         formatter={legendFormatter}
                         wrapperStyle={{ fontSize: "14px", top: 0 }}
                         iconType='circle'
@@ -151,26 +179,26 @@ function DailyActivity({ data }) {
                         align='right'
                         verticalAlign="top"
                     />
-                    <Bar
+                    &lt;Bar
                         name='Poids (kg)'
                         unit='kg'
-                        shape={<Rectangle radius={[3.5, 3.5, 0, 0]} />}
+                        shape={&lt;Rectangle radius={[3.5, 3.5, 0, 0]} />}
                         yAxisId="kilogram"
                         dataKey="kilogram"
                         fill="#000000"
                     />
-                    <Bar
+                    &lt;Bar
                         name='Calories brûlées (kCal)'
                         unit='Kcal'
-                        shape={<Rectangle
+                        shape={&lt;Rectangle
                             radius={[3.5, 3.5, 0, 0]} />}
                         yAxisId="calories"
                         dataKey="calories"
                         fill="#E60000"
                     />
-                </BarChart>
-            </ResponsiveContainer>
-        </React.Fragment>
+                &lt;/BarChart>
+            &lt;/ResponsiveContainer>
+        &lt;/React.Fragment>
     )
 }
 
@@ -187,4 +215,26 @@ DailyActivity.propTypes = {
     })
 }
 
-export default DailyActivity
+export default DailyActivity</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="module-AverageSessionsDuration.html">AverageSessionsDuration</a></li><li><a href="module-Components.html">Components</a></li><li><a href="module-DailyActivity.html">DailyActivity</a></li><li><a href="module-Dashboard.html">Dashboard</a></li><li><a href="module-KeyDataDisplay.html">KeyDataDisplay</a></li><li><a href="module-Main.html">Main</a></li><li><a href="module-NotFound.html">NotFound</a></li><li><a href="module-Performance.html">Performance</a></li><li><a href="module-Score.html">Score</a></li></ul><h3>Classes</h3><ul><li><a href="DataModel.html">DataModel</a></li></ul><h3>Global</h3><ul><li><a href="global.html#App">App</a></li><li><a href="global.html#router">router</a></li><li><a href="global.html#useFetchAllData">useFetchAllData</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.2</a> on Wed Mar 08 2023 11:32:47 GMT+0100 (heure normale d’Europe centrale)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

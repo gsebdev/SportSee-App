@@ -6,13 +6,22 @@ import swim from '../images/swim.png'
 import yoga from '../images/yoga.png'
 import strength from '../images/strength.png'
 import SquareIcon from './SquareIcon'
+/**
+ * @module Main
+ * @version 1.0.0
+ * @author Sébastien GAULT
+ */
 
 /**
- * React Component used to display the header and the vertical navbar of the dashboard
+ * Wrapper component that displays :
+ * The header of the app
+ * The vertical navbar of the app
+ * The main content feeded by it's children provided by the router
  * 
- * @returns {React.ReactElement}
+ * @memberof module:Main
+ * @returns {JSX.Element} React element
  */
-export default function Main(){
+function Main(){
     const navIcons = [yoga, swim, cycle, strength]
     return (
         <React.Fragment>
@@ -37,3 +46,5 @@ export default function Main(){
         </React.Fragment>
     )
 }
+
+export default Main

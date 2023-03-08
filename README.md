@@ -1,3 +1,5 @@
+
+* [![React][React.js]][React-url]
 # OC - Project 12 - SportSee App.
 This project contains the source code of the Front end part of the sports analytics dashboard SportSee
 
@@ -8,8 +10,28 @@ This project uses the [recharts](https://recharts.org/en-US/) library to generat
 
 ### 2.1 Prerequisites
 * [npm](https://www.npmjs.com/)
+* [git] (https://git-scm.com/)
 
-### `npm start`
+### 2.2 Installation
+* Clone the repo
+   ```sh
+   git clone https://github.com/gsebdev/OC-P12-SportSee.git
+   ```
+* Install NPM packages
+    ```sh
+    npm install
+    ```
+* Set the API base URL and if you want to mock the API data
+    ```
+    REACT_APP_MOCK_DATA=false|true
+    REACT_APP_API_URL=http://your-api-base-url
+    ```
+### 2.3 Usage
+
+Here are all the available scripts to use the project
+You can find the documentation [here](docs/index.html)
+
+#### `npm start`
 
 Runs the app in the development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
@@ -17,12 +39,16 @@ Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 The page will reload when you make changes.\
 You may also see any lint errors in the console.
 
-### `npm test`
+#### `npm run docs`
+
+Generate the app documentation in the 'docs' folder based on JsDoc
+
+#### `npm test`
 
 Launches the test runner in the interactive watch mode.\
 See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### `npm run build`
+#### `npm run build`
 
 Builds the app for production to the `build` folder.\
 It correctly bundles React in production mode and optimizes the build for the best performance.
@@ -32,7 +58,7 @@ Your app is ready to be deployed!
 
 See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-### `npm run eject`
+#### `npm run eject`
 
 **Note: this is a one-way operation. Once you `eject`, you can't go back!**
 

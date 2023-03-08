@@ -5,13 +5,18 @@ import apple from '../images/apple.png'
 import cheeseburger from '../images/cheeseburger.png'
 import React from 'react'
 import { PropTypes } from 'prop-types'
+/**
+ * @module KeyDataDisplay
+ * @version 1.0.0
+ * @author Sébastien GAULT
+ */
 
 /**
- * React Component that displays the user key data
- * 
- * @param {object} props
- * @param {[...{ value: string, name: string, unit: string }]} props.data - an array of the user key data
- * @returns {React.ReactElement}
+ * Component that displays the user key data with a specified icon and background
+ * @memberof module:KeyDataDisplay
+ * @param {object} props react props object that must contain :
+ *   @param {array<{ value: string, name: string, unit: string }>} props.data formatted user's key datas
+ * @return {JSX.Element} returns a react element
  */
 function KeyDataDisplay({ data }) {
     

@@ -1,16 +1,24 @@
 import React, { useRef } from "react";
 import PropTypes from 'prop-types'
 import { Line, LineChart, Rectangle, ResponsiveContainer, Tooltip, XAxis, YAxis } from "recharts";
-
+/** 
+ * @module AverageSessionsDuration
+ * @version 1.0.0
+ * @author Sébastien GAULT
+*/
 /**
- * Component that displays a line chart of daily average durations of sessions
+ * A line chart that displays the average session duration for each day of the week
  * 
- * @param {object} props
- * @param {object} props.data - object {sessions: [...{}], values: []}
- * @returns {React.ReactElement}
+ * @memberof module:AverageSessionsDuration
+ * @param {Object} props React props object that must contain :
+ *   @param {Object} props.data formated users data that must contain :
+ *     @param {Array<number>} props.data.values An array containing each session length values
+ *     @param {Array<{day: String, sessionLength: Number}>} props.data.sessions An array containing objects with the day name and the sessionLength corresponding value
+ * @returns {JSX.Element} return a responsive line chart filled by the user data
  */
 function AverageSessionsDuration({ data }) {
     //calculate extrapolated values [start, end], and add them to the data we will pass to the chart
+    //As the line of the chart can start and end outside the container
     const extrapolatedValues = [
         {
             day: '',
@@ -25,10 +33,20 @@ function AverageSessionsDuration({ data }) {
     
     //used to get the chart container element and further get its height to pass it to the CustomCursor component
     const container = useRef()
-
+    
+    /**
+     * A react component to customize the chart cursor
+     * It returns a ful height rectangle starting from the selected point and ending to the right border of the chart 
+     * @memberof module:AverageSessionsDuration
+     * @inner
+     * @param {object} props react props object passed by the recharts component
+     *   @param {Array<Object>} props.points coordinates of the selected point
+     *   @param {Number} props.width width of the line chart 
+     * @returns {JSX.Element} returns the cursor element
+     */
     const CustomCursor = ({ points, width }) => {
         const rectWidth = width - points[0].x
-        return <Rectangle fill='rgba(0,0,0,0.2)' y={0} x={points[0].x} width={rectWidth} height={container.current.offsetHeight} />;
+        return <Rectangle fill='rgba(0,0,0,0.2)' y={0} x={points[0].x} width={rectWidth} height={container.current.offsetHeight} />
     }
 
     return (

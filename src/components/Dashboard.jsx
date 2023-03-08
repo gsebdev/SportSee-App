@@ -7,18 +7,31 @@ import DailyActivity from "./DailyActivity"
 import KeyDataDisplay from "./KeyDataDisplay"
 import Performance from "./Performance"
 import Score from "./Score"
+/**
+ * @module Dashboard
+ * @version 1.0.0
+ * @author Sébastien GAULT
+ */
 
 /**
- * React Component that displays the user dashboard
+ * The main component that displays the user dashboard based on user's datas including :
+ * the User's Name
+ * The Daily Activity Bar Chart
+ * The Average Sessions Duration line chart
+ * The Performance Radar Chart
+ * The Score Radial Chart
+ * And the key data of the day
  * 
- * @returns {React.ReactElement}
- */
+ * @memberof module:Dashboard
+ * @function Dashboard
+ * @returns {JSX.Element} 
+*/
 export default function Dashboard(){
-    // get the id param of the request
+    // get the user's id in the param of the request
     const { id } = useParams()
     const [ formatedData, setFormatedData ] = useState()
 
-    //fetch all the data needed with a custom hook
+    //fetch all the data needed with the useFetchAllData() custom hook
     const { data, loading, error } = useFetchAllData(id)
     
     useEffect(() => {

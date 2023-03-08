@@ -1,13 +1,19 @@
 import React from "react"
 import { PolarAngleAxis, RadialBar, RadialBarChart, ResponsiveContainer } from "recharts"
 import { PropTypes } from 'prop-types'
-
+/**
+ * @module Score
+ * @version 1.0.0
+ * @author Sébastien GAULT
+ */
 /**
 * React component a radial bar chart of the user today score.
+* Using recharts library
+* @memberof module:Score
 * @param {Object} props
-* @param {Object} props.data - data object containing the score value.
-* @param {number} props.data.score - score value to display.
-* @returns {React.ReactElement}
+*   @param {Object} props.data - data object containing the score value.
+*     @param {number} props.data.score - score value to display.
+* @returns {React.ReactElement} returns a react element displaying a radial bar chart 
 */
 function Score({ data }) {
     return (
@@ -34,7 +40,7 @@ function Score({ data }) {
                         cornerRadius={10}
                     />
                     <PolarAngleAxis
-                        scale='sqrt' 
+                        scale='linear' 
                         type="number" 
                         domain={[0, 100]} 
                         angleAxisId={0} 

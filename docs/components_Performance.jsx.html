@@ -1,4 +1,32 @@
-import React from "react";
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: components/Performance.jsx</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: components/Performance.jsx</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import React from "react";
 import { PolarAngleAxis, PolarGrid, PolarRadiusAxis, Radar, RadarChart, ResponsiveContainer } from "recharts";
 import { PropTypes } from 'prop-types'
 /**
@@ -12,7 +40,7 @@ import { PropTypes } from 'prop-types'
  * @memberof module:Performance
  * @param {object} props react props object that must contain :
  *   @param {object} props.data user's formatted performance data that must contain :
- *     @param {array<{ ability: string, value: number }>} props.data.abilities array of objects representing each ability of the user and it's value
+ *     @param {array&lt;{ ability: string, value: number }>} props.data.abilities array of objects representing each ability of the user and it's value
  *     @param {number} props.data.fullMark calculated number of the maximum value of the axis based on the abilities values
  * @returns {JSX.Element} returns a react element displaying a radar chart of all the user's abilities
  */
@@ -41,48 +69,48 @@ function Performance({ data }) {
             y = y + 16
         }
         return (
-            <g className="recharts-layer recharts-polar-angle-axis-tick">
-                <text
+            &lt;g className="recharts-layer recharts-polar-angle-axis-tick">
+                &lt;text
                     x={x}
                     y={y}
                     className="performance__tick-value"
                     textAnchor={textAnchor}
                     fill={fill}
                     >
-                        <tspan>{payload.value}</tspan>
-                </text>
-          </g>  
+                        &lt;tspan>{payload.value}&lt;/tspan>
+                &lt;/text>
+          &lt;/g>  
         )
     }
     return (
-        <ResponsiveContainer width='100%' height="100%">
-            <RadarChart 
+        &lt;ResponsiveContainer width='100%' height="100%">
+            &lt;RadarChart 
                 startAngle={30}
                 endAngle={-330}
                 margin={{ top: 20, right: 30, bottom: 20, left: 30 }}
                 data={abilities}>
-                <PolarGrid 
+                &lt;PolarGrid 
                     stroke="#ffffff"
                     radialLines={false}/>
-                <PolarAngleAxis 
+                &lt;PolarAngleAxis 
                     dataKey='ability'
                     stroke="#fff"
-                    tick={<CustomTick/>}
+                    tick={&lt;CustomTick/>}
                     tickLine={false} />
-                <PolarRadiusAxis 
+                &lt;PolarRadiusAxis 
                 
                     domain={[0, fullMark]} 
                     axisLine={false}
                     tick={false}
                     tickCount={7}
                     tickLine={false} />
-                <Radar 
+                &lt;Radar 
                     name='performance' 
                     dataKey='value' 
                     fill='rgba(255, 1, 1, 0.7)'
                         />
-            </RadarChart>
-        </ResponsiveContainer>
+            &lt;/RadarChart>
+        &lt;/ResponsiveContainer>
     )
 }
 
@@ -96,4 +124,26 @@ Performance.propTypes = {
     }).isRequired
   }
 
-  export default Performance
+  export default Performance</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="module-AverageSessionsDuration.html">AverageSessionsDuration</a></li><li><a href="module-Components.html">Components</a></li><li><a href="module-DailyActivity.html">DailyActivity</a></li><li><a href="module-Dashboard.html">Dashboard</a></li><li><a href="module-KeyDataDisplay.html">KeyDataDisplay</a></li><li><a href="module-Main.html">Main</a></li><li><a href="module-NotFound.html">NotFound</a></li><li><a href="module-Performance.html">Performance</a></li><li><a href="module-Score.html">Score</a></li></ul><h3>Classes</h3><ul><li><a href="DataModel.html">DataModel</a></li></ul><h3>Global</h3><ul><li><a href="global.html#App">App</a></li><li><a href="global.html#router">router</a></li><li><a href="global.html#useFetchAllData">useFetchAllData</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.2</a> on Wed Mar 08 2023 11:32:47 GMT+0100 (heure normale d’Europe centrale)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

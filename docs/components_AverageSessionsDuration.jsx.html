@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: components/AverageSessionsDuration.jsx</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: components/AverageSessionsDuration.jsx</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import React, { useRef } from "react";
+import PropTypes from 'prop-types'
+import { Line, LineChart, Rectangle, ResponsiveContainer, Tooltip, XAxis, YAxis } from "recharts";
+/** 
+ * @module AverageSessionsDuration
+ * @version 1.0.0
+ * @author Sébastien GAULT
+*/
+/**
+ * A line chart that displays the average session duration for each day of the week
+ * 
+ * @memberof module:AverageSessionsDuration
+ * @param {Object} props React props object that must contain :
+ *   @param {Object} props.data formated users data that must contain :
+ *     @param {Array&lt;number>} props.data.values An array containing each session length values
+ *     @param {Array&lt;{day: String, sessionLength: Number}>} props.data.sessions An array containing objects with the day name and the sessionLength corresponding value
+ * @returns {JSX.Element} return a responsive line chart filled by the user data
+ */
+function AverageSessionsDuration({ data }) {
+    //calculate extrapolated values [start, end], and add them to the data we will pass to the chart
+    //As the line of the chart can start and end outside the container
+    const extrapolatedValues = [
+        {
+            day: '',
+            sessionLength: data.values[0] + (( data.values[0] - data.values[1] ) / 2)
+        },
+        {
+            day: '',
+            sessionLength: data.values[6] + (( data.values[6] - data.values[5] ) / 2)
+        } 
+    ]
+    const chartData = [ extrapolatedValues[0], ...data.sessions, extrapolatedValues[1] ]
+    
+    //used to get the chart container element and further get its height to pass it to the CustomCursor component
+    const container = useRef()
+    
+    /**
+     * A react component to customize the chart cursor
+     * It returns a ful height rectangle starting from the selected point and ending to the right border of the chart 
+     * @memberof module:AverageSessionsDuration
+     * @inner
+     * @param {object} props react props object passed by the recharts component
+     *   @param {Array&lt;Object>} props.points coordinates of the selected point
+     *   @param {Number} props.width width of the line chart 
+     * @returns {JSX.Element} returns the cursor element
+     */
+    const CustomCursor = ({ points, width }) => {
+        const rectWidth = width - points[0].x
+        return &lt;Rectangle fill='rgba(0,0,0,0.2)' y={0} x={points[0].x} width={rectWidth} height={container.current.offsetHeight} />
+    }
+
+    return (
+        &lt;div style={{ height: '100%', width: '100%' }} ref={container} >
+            {chartData &amp;&amp;
+                &lt;React.Fragment>
+                &lt;h2>Durée moyenne des sessions&lt;/h2>
+                    &lt;ResponsiveContainer width='116%' height="100%">
+                        &lt;LineChart data={chartData} margin={{ left: 0, top: 50, right: 0, bottom: 16 }}>
+                            &lt;defs>
+                                &lt;linearGradient id="lineGradient" x1="0%" y1="0" x2="100%" y2="0">
+                                    &lt;stop offset="0%" stopColor="rgba(255, 255, 255, 0.4)" />
+                                    &lt;stop offset='100%' stopColor="rgba(255, 255, 255, 1)" />
+                                &lt;/linearGradient>
+                            &lt;/defs>
+                            &lt;Tooltip
+                                cursor={&lt;CustomCursor />}
+                                contentStyle={{ padding: '3px 7px', border: '0' }}
+                                wrapperStyle={{ border: 'none', fontSize: 8 }}
+                                separator='' labelFormatter={() => ''}
+                                formatter={(value) => [value + ' min', ""]} />
+                            &lt;XAxis
+                                axisLine={false}
+                                dataKey='day'
+                                tickLine={false}
+                                tick={{ opacity: 0.5, fill: '#FFFFFF' }}
+                            />
+                            &lt;YAxis
+                                hide={true}
+                                dataKey='sessionLength'
+                                domain={([dataMin, dataMax]) => { const halfDiff = (dataMax - dataMin) / 2; return [(dataMin - halfDiff), (dataMax + halfDiff)] }} />
+                            &lt;Line
+                                dataKey='sessionLength'
+                                type='natural'
+                                dot={false}
+                                stroke='url(#lineGradient)'
+                                strokeWidth={2}
+                                activeDot={{ fill: 'white', stroke: 'rgba(255,255,255,0.3', strokeWidth: 8, r: 4 }} />
+
+                        &lt;/LineChart>
+                    &lt;/ResponsiveContainer>
+                &lt;/React.Fragment>
+            }
+        &lt;/div>
+    )
+}
+
+AverageSessionsDuration.propTypes = {
+    data: PropTypes.shape({
+        sessions: PropTypes.arrayOf(PropTypes.shape({
+            sessionLength: PropTypes.number.isRequired,
+            day: PropTypes.string.isRequired
+        })).isRequired,
+        values: PropTypes.arrayOf(PropTypes.number).isRequired
+    })
+}
+
+export default AverageSessionsDuration</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="module-AverageSessionsDuration.html">AverageSessionsDuration</a></li><li><a href="module-Components.html">Components</a></li><li><a href="module-DailyActivity.html">DailyActivity</a></li><li><a href="module-Dashboard.html">Dashboard</a></li><li><a href="module-KeyDataDisplay.html">KeyDataDisplay</a></li><li><a href="module-Main.html">Main</a></li><li><a href="module-NotFound.html">NotFound</a></li><li><a href="module-Performance.html">Performance</a></li><li><a href="module-Score.html">Score</a></li></ul><h3>Classes</h3><ul><li><a href="DataModel.html">DataModel</a></li></ul><h3>Global</h3><ul><li><a href="global.html#App">App</a></li><li><a href="global.html#router">router</a></li><li><a href="global.html#useFetchAllData">useFetchAllData</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.2</a> on Wed Mar 08 2023 11:32:47 GMT+0100 (heure normale d’Europe centrale)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

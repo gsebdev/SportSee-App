@@ -1,5 +1,3 @@
-
-* [![React][React.js]][React-url]
 # OC - Project 12 - SportSee App.
 This project contains the source code of the Front end part of the sports analytics dashboard SportSee
 
@@ -40,10 +38,10 @@ The route to access the dashboard of a specific user is : [http://localhost:3000
 If the API is mocked you can replace the {id} by any string, it will work and return always the same data.\
 If you don't mock the API, the current only available id's are [12](http://localhost:3000/user/12) and [18](http://localhost:3000/user/18).\
 You can find [the NodeJS Backend of the App on GitHub Here](https://github.com/OpenClassrooms-Student-Center/P9-front-end-dashboard).\
-Install it and launch the server in order to use this SportSee Frontend App.\
+Install it and launch the server in order to use this SportSee Frontend App.
 
 
-The page will reload when you make changes.\
+The page will reload when you make changes.
 You may also see any lint errors in the console.
 
 #### `npm run docs`
@@ -57,10 +55,10 @@ See the section about [running tests](https://facebook.github.io/create-react-ap
 
 #### `npm run build`
 
-Builds the app for production to the `build` folder.\
+Builds the app for production to the `build` folder.
 It correctly bundles React in production mode and optimizes the build for the best performance.
 
-The build is minified and the filenames include the hashes.\
+The build is minified and the filenames include the hashes.
 Your app is ready to be deployed!
 
 See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.

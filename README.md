@@ -4,13 +4,13 @@
 This project contains the source code of the Front end part of the sports analytics dashboard SportSee
 
 ## 1. General Informations
-This project has been generated with [create-react-app](https://facebook.github.io/create-react-app)
-This project uses the [recharts](https://recharts.org/en-US/) library to generate the charts
+* This project has been generated with [create-react-app](https://facebook.github.io/create-react-app)
+* This project uses the [recharts](https://recharts.org/en-US/) library to generate the charts
 ## 2. Start the project
 
 ### 2.1 Prerequisites
 * [npm](https://www.npmjs.com/)
-* [git] (https://git-scm.com/)
+* [git](https://git-scm.com/)
 
 ### 2.2 Installation
 * Clone the repo
@@ -28,13 +28,20 @@ This project uses the [recharts](https://recharts.org/en-US/) library to generat
     ```
 ### 2.3 Usage
 
-Here are all the available scripts to use the project
-You can find the documentation [here](docs/index.html)
+Here are all the available scripts to use the project.\
+You can find the documentation [here](docs/)
 
 #### `npm start`
 
-Runs the app in the development mode.\
+Runs the SportSee app in the development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+
+The route to access the dashboard of a specific user is : [http://localhost:3000/user/{id}](http://localhost:3000/user/{id}) \
+If the API is mocked you can replace the {id} by any string, it will work and return always the same data.\
+If you don't mock the API, the current only available id's are [12](http://localhost:3000/user/12) and [18](http://localhost:3000/user/18).\
+You can find [the NodeJS Backend of the App on GitHub Here](https://github.com/OpenClassrooms-Student-Center/P9-front-end-dashboard).\
+Install it and launch the server in order to use this SportSee Frontend App.\
+
 
 The page will reload when you make changes.\
 You may also see any lint errors in the console.

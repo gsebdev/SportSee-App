@@ -18,7 +18,7 @@ class DataModel {
         this._data = data
         this._userKeyData = this.formatKeyData()
         this._userScore = this.formatScoreData()
-        this._userName = this._data.user.data.userInfos.firstName
+        this._userName = this._data.user.userInfos.firstName
         this._userActivity = this.formatActivityData()
         this._userPerformance = this.formatPerformanceData()
         this._userAverageSessions = this.formatAverageSessions()
@@ -45,7 +45,7 @@ class DataModel {
      * @returns {array<{value: string, name: string, unit: string}>}
      */
     formatKeyData(){
-        const keyData = this._data.user.data.keyData
+        const { keyData } = this._data.user
         /** 
          * format number to english notation
          * 
@@ -86,7 +86,7 @@ class DataModel {
     * @returns {{score: number}} object with a property `score` containing the users today's score 
     */
     formatScoreData(){
-        return this._data.user.data.todayScore ? { score: this._data.user.data.todayScore * 100 } : { score: this._data.user.data.score * 100 }
+        return this._data.user.todayScore ? { score: this._data.user.todayScore * 100 } : { score: this._data.user.score * 100 }
     }
     /**
      * Method that format the user's average sessions duration data
@@ -96,7 +96,7 @@ class DataModel {
     formatAverageSessions(){
         const weekDays = [ 'L', 'M', 'M', 'J', 'V', 'S', 'D' ]
         //replace the day number by a day letter
-        const sessions = this._data.averageSessions.data.sessions.map(session => {
+        const sessions = this._data.averageSessions.sessions.map(session => {
             return {
                 sessionLength: session.sessionLength,
                 day: weekDays[ session.day - 1 ]
@@ -135,9 +135,9 @@ class DataModel {
             return dictionary[text] ? dictionary[text] : text
         }
 
-        const performance = this._data.performance.data.data.map(data => {
+        const performance = this._data.performance.data.map(data => {
                 //translate to french the ability
-                const ability = translateToFr(this._data.performance.data.kind[data.kind])
+                const ability = translateToFr(this._data.performance.kind[data.kind])
                 return {
                     //Capitalize the ability name
                     ability: ability.charAt(0).toUpperCase() + ability.slice(1) ,
@@ -160,7 +160,7 @@ class DataModel {
      */
     formatActivityData(){
         
-        const sessions = this._data.activity.data.sessions.map(session => {
+        const sessions = this._data.activity.sessions.map(session => {
             // keep only the day number of the date in 'day' property
             const day = parseInt(session.day.slice(-2))
             return {...session, day: day}

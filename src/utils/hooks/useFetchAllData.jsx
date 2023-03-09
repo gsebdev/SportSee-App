@@ -44,8 +44,8 @@ export default function useFetchAllData(id) {
                         for (const key of Object.keys(endpoints)) {
                             const response = await fetch(url + endpoints[key])
                             if(response.ok) {
-                                const jsData = await response.json()
-                                fetchedData[key] = jsData 
+                                const { data } = await response.json()
+                                fetchedData[key] = data 
                             } else {
                                 throw new Error(response.status)
                             }

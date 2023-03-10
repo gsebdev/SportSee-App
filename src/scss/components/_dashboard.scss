@@ -47,6 +47,29 @@
     &__error {
         margin-top: 150px;
         text-align: center;
+        display: flex;
+        flex-direction: column;
+        h1 {
+            margin-bottom: 0;
+            color: $primary-color;
+        }
+        h2 {
+            font-size: 1.5em;
+            margin-bottom: 2em;
+            color: $secondary-color;
+        }
+        > div {
+            display: flex;
+            flex-direction: column;
+            span, a {
+                margin-bottom: 1em;
+            }
+            a {
+                color: blue;
+                text-decoration: underline;
+            }  
+        }
+        
     }
 
     .title {

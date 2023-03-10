@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Module: Score</title>
+    <title>JSDoc: Module: Error</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Module: Score</h1>
+    <h1 class="page-title">Module: Error</h1>
 
     
 
@@ -77,7 +77,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="components_Score.jsx.html">components/Score.jsx</a>, <a href="components_Score.jsx.html#line4">line 4</a>
+        <a href="components_Error.jsx.html">components/Error.jsx</a>, <a href="components_Error.jsx.html#line1">line 1</a>
     </li></ul></dd>
     
 
@@ -116,7 +116,7 @@
     
 
     
-    <h4 class="name" id=".Score"><span class="type-signature">(static) </span>Score<span class="signature">(props)</span><span class="type-signature"> &rarr; {React.ReactElement}</span></h4>
+    <h4 class="name" id=".Error"><span class="type-signature">(static) </span>Error<span class="signature">(props)</span><span class="type-signature"> &rarr; {JSX.Element}</span></h4>
     
 
     
@@ -124,7 +124,7 @@
 
 
 <div class="description">
-    React component a radial bar chart of the user today score.Using recharts library
+    Component that displays the errors a prop 'error' can be provided or it can use the useRouteError hook to get the error messageIf no error prop is provided neither a routeError, the default message is 404 error
 </div>
 
 
@@ -166,7 +166,7 @@
             <td class="type">
             
                 
-<span class="param-type">Object</span>
+<span class="param-type">object</span>
 
 
             
@@ -176,7 +176,7 @@
 
             
 
-            <td class="description last">
+            <td class="description last">the react props object
                 <h6>Properties</h6>
                 
 
@@ -202,13 +202,13 @@
 
         <tr>
             
-                <td class="name"><code>data</code></td>
+                <td class="name"><code>error</code></td>
             
 
             <td class="type">
             
                 
-<span class="param-type">Object</span>
+<span class="param-type">object</span>
 
 
             
@@ -218,7 +218,7 @@
 
             
 
-            <td class="description last">data object containing the score value.
+            <td class="description last">the error object optional
                 <h6>Properties</h6>
                 
 
@@ -244,7 +244,7 @@
 
         <tr>
             
-                <td class="name"><code>score</code></td>
+                <td class="name"><code>status</code></td>
             
 
             <td class="type">
@@ -260,7 +260,30 @@
 
             
 
-            <td class="description last">score value to display.</td>
+            <td class="description last">the error status number</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>statusText</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">the error text</td>
         </tr>
 
     
@@ -315,7 +338,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="components_Score.jsx.html">components/Score.jsx</a>, <a href="components_Score.jsx.html#line18">line 18</a>
+        <a href="components_Error.jsx.html">components/Error.jsx</a>, <a href="components_Error.jsx.html#line22">line 22</a>
     </li></ul></dd>
     
 
@@ -344,7 +367,7 @@
 
         
 <div class="param-desc">
-    returns a react element displaying a radial bar chart
+    returns a react element with the error message
 </div>
 
 
@@ -355,7 +378,7 @@
     </dt>
     <dd>
         
-<span class="param-type">React.ReactElement</span>
+<span class="param-type">JSX.Element</span>
 
 
     </dd>

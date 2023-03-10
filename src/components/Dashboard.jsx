@@ -41,14 +41,13 @@ export default function Dashboard(){
         }
     }, [data, error])
 
+    if(error){
+        throw new Response('Erreur', {status: error.cause, statusText: error.message })
+    }
+
     return (
         <React.Fragment>
             {loading && <div className="dashboard__loader"></div>}
-            { error && 
-                <div className="dashboard__error">
-                    <span>{error}</span>
-                </div>
-            }
             {formatedData && 
                 <div className='dashboard'>
                     <div className="title">

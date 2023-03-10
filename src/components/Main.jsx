@@ -1,5 +1,5 @@
 import React from 'react'
-import { Link, Outlet } from 'react-router-dom'
+import { Link, useOutlet } from 'react-router-dom'
 import logo from '../images/logo.png'
 import cycle from '../images/cycle.png'
 import swim from '../images/swim.png'
@@ -17,12 +17,19 @@ import SquareIcon from './SquareIcon'
  * The header of the app
  * The vertical navbar of the app
  * The main content feeded by it's children provided by the router
+ * If no children is provided to this component, it will throw an error as the router can catch it and display the proper error element
  * 
  * @memberof module:Main
  * @returns {JSX.Element} React element
  */
 function Main(){
     const navIcons = [yoga, swim, cycle, strength]
+
+    const outlet = useOutlet()
+    if(!outlet){
+        throw new Response('', {status: 404, statusText: 'La page n\'existe pas' })
+    }
+
     return (
         <React.Fragment>
             <header>
@@ -36,7 +43,7 @@ function Main(){
                     </ul>
                 </nav>
             </header>
-            <main><Outlet /></main>
+            <main>{outlet}</main>
             <nav className='vertical-nav'>
                 <ul>
                     {navIcons.map((icon, index) => <li key={icon + index}><SquareIcon iconSrc={icon} className='nav'/></li>)}

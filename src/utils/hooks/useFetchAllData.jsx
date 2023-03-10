@@ -31,7 +31,12 @@ export default function useFetchAllData(id) {
                 //if the REACT_APP_MOCK_DATA variable in the .env file is set to 'true'
                 //the data is taken from a file that mock the return of the API
                 if(process.env.REACT_APP_MOCK_DATA === 'true'){
-                    setData(mockApi)
+                    if(id === '18' || id === '12'){
+                        setData(mockApi)
+                    }else{
+                        throw new Error('La page n\'existe pas', { cause: 404 })
+                    }
+                    
                     setLoading(false)
                 } 
                 //if the REACT_APP_MOCK_DATA variable in the .env file is not set to 'true'
@@ -47,7 +52,8 @@ export default function useFetchAllData(id) {
                                 const { data } = await response.json()
                                 fetchedData[key] = data 
                             } else {
-                                throw new Error(response.status)
+                                const message = response.status === 404 ? 'La page n\'existe pas' : response.statusText  
+                                throw new Error(message, {cause: response.status})
                             }
                         }
                         //Once all data is fetched, set the `data` state with the fetchdData and `loading` state to false
@@ -56,14 +62,18 @@ export default function useFetchAllData(id) {
                     } 
                     //if no id provided throw an error
                     else {
-                        throw new Error('Une erreur est survenue!')
+                        throw new Error('Une erreur est survenue!', {cause: 500})
                     }
                 }
             } 
             //Catch errors during fetch process and set the `error` state with the appropriate message
             catch(error) {
-                const message = error.message === '404' ? 'Erreur 404 : Page non trouvée' : `Erreur ${error.message}`
-                setError(message)
+                if(error instanceof SyntaxError || error.message === 'Failed to fetch') {
+                    setError(new Error('Erreur du serveur', {cause: 500}))
+                }else{
+                    setError(error)
+                }
+                
                 setLoading(false)
             }
         }

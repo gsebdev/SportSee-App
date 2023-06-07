@@ -1,5 +1,10 @@
-# OC - Project 12 - SportSee App.
-This project contains the source code of the Front end part of the sports analytics dashboard SportSee
+# SportSee App.
+This project contains the source code of the Front end part of the sports analytics dashboard SportSee\
+This is a user dashboard with physical activity analytics.\
+This version can use data_mock or an api.\
+You can find [the NodeJS Backend of the App on GitHub Here](https://github.com/OpenClassrooms-Student-Center/P9-front-end-dashboard).\
+
+[See demo](https://gsebdev.github.io/SportSee-App/)
 
 ## 1. General Informations
 * This project has been generated with [create-react-app](https://facebook.github.io/create-react-app)
@@ -13,7 +18,7 @@ This project contains the source code of the Front end part of the sports analyt
 ### 2.2 Installation
 * Clone the repo
    ```sh
-   git clone https://github.com/gsebdev/OC-P12-SportSee.git
+   git clone https://github.com/gsebdev/SportSee-App
    ```
 * Install NPM packages
     ```sh

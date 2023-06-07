@@ -1,8 +1,7 @@
 import './scss/app.scss'
-import { createBrowserRouter, Navigate, RouterProvider } from "react-router-dom"
+import { createBrowserRouter, createHashRouter, RouterProvider } from "react-router-dom"
 import Main from './components/Main'
 import Dashboard from './components/Dashboard'
-import NotFound from './components/Error'
 import Error from './components/Error'
 /**
  * Main app component for the SportSee App
@@ -15,7 +14,7 @@ import Error from './components/Error'
 /**
  * define the browser routes for the app
  */
-const router = createBrowserRouter([
+const rouuterArray = [
   {
     path: '/',
     element: <Main />,
@@ -24,16 +23,17 @@ const router = createBrowserRouter([
         {
           path: 'user/:id',
           element: <Dashboard />
-        }
+        },
+        {
+          index: true,
+          element: <Error />
+        },
       ]
   },
-  {
-    path: '*',
-    element: <Error />
-  }
+  
 ]
+const router = process.env.REACT_APP_USE_HASH_ROUTER === 'true' ? createHashRouter(rouuterArray) : createBrowserRouter(rouuterArray)
 
-)
 /**
  * Root app component.
  * @returns {JSX.Element} the app

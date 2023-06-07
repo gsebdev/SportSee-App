@@ -26,9 +26,9 @@ function Main(){
     const navIcons = [yoga, swim, cycle, strength]
 
     const outlet = useOutlet()
-    if(!outlet){
+    /*if(!outlet){
         throw new Response('', {status: 404, statusText: 'La page n\'existe pas' })
-    }
+    }*/
 
     return (
         <React.Fragment>

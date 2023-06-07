@@ -1,0 +1,14 @@
+{
+  "files": {
+    "main.css": "https://gsebdev.github.io/SportSee-App/static/css/main.b7a0b99c.css",
+    "main.js": "https://gsebdev.github.io/SportSee-App/static/js/main.2a7faf5a.js",
+    "static/media/logo.png": "https://gsebdev.github.io/SportSee-App/static/media/logo.e950560f9b83b1780687.png",
+    "index.html": "https://gsebdev.github.io/SportSee-App/index.html",
+    "main.b7a0b99c.css.map": "https://gsebdev.github.io/SportSee-App/static/css/main.b7a0b99c.css.map",
+    "main.2a7faf5a.js.map": "https://gsebdev.github.io/SportSee-App/static/js/main.2a7faf5a.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.b7a0b99c.css",
+    "static/js/main.2a7faf5a.js"
+  ]
+}

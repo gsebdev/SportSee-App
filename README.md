@@ -2,7 +2,7 @@
 This project contains the source code of the Front end part of the sports analytics dashboard SportSee\
 This is a user dashboard with physical activity analytics.\
 This version can use data_mock or an api.\
-You can find [the NodeJS Backend of the App on GitHub Here](https://github.com/OpenClassrooms-Student-Center/P9-front-end-dashboard).\
+You can find [the NodeJS Backend of the App on GitHub Here](https://github.com/OpenClassrooms-Student-Center/P9-front-end-dashboard)
 
 [See demo](https://gsebdev.github.io/SportSee-App/)
 
